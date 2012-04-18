@@ -2,6 +2,8 @@ package com.epam.training.spring;
 
 import java.util.Locale;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -12,6 +14,7 @@ public class I18NGreeting implements GreetingService, ApplicationContextAware {
 
     private String messageName;
     private Locale locale;
+    private Logger logger = LoggerFactory.getLogger(I18NGreeting.class);
     
     @Override
     public void sayGreeting() {
@@ -22,8 +25,9 @@ public class I18NGreeting implements GreetingService, ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext ctx)
             throws BeansException {
-        this.ctx = ctx;
         
+        this.ctx = ctx;
+        logger.debug("setApplicationContext() called.");
     }
 
     public String getMessageName() {
