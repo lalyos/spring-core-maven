@@ -5,6 +5,7 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,9 @@ public class I18NGreeting implements GreetingService, ApplicationContextAware {
 
     private ApplicationContext ctx;
 
+    @Value("${msg.key}")
     private String messageName;
+    @Value("${greeting.locale}")
     private Locale locale;
     private Logger logger = LoggerFactory.getLogger(I18NGreeting.class);
     
